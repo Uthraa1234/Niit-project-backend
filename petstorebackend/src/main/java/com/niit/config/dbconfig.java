@@ -14,7 +14,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.niit.model.Cart;
 import com.niit.model.Category;
+import com.niit.model.CustomerOrder;
 import com.niit.model.Product;
+import com.niit.model.Role;
+import com.niit.model.ShippingAddress;
 import com.niit.model.Supplier;
 import com.niit.model.User;
 
@@ -22,7 +25,7 @@ import com.niit.model.User;
 @EnableTransactionManagement
 public class dbconfig {
 
-	@Bean
+	@Bean(name="datasource")
 	public DataSource getDataSource() {
 		System.out.println("Datasource");
 	    BasicDataSource dataSource = new BasicDataSource();
@@ -43,7 +46,7 @@ public class dbconfig {
 		hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");
 		hibernateProperties.setProperty("hibernate.show_sql", "true");
 		lsf.addProperties(hibernateProperties);
-		Class classes[]=new Class[]{Category.class,Cart.class,Product.class,User.class,Supplier.class};
+		Class classes[]=new Class[]{Category.class,Cart.class,Product.class,User.class,Supplier.class,ShippingAddress.class,Role.class,CustomerOrder.class};
 		
 	    return lsf.addAnnotatedClasses(classes).buildSessionFactory();
 	}

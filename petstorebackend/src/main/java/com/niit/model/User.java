@@ -1,13 +1,14 @@
 package com.niit.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 
 import org.springframework.stereotype.Component;
-
 
 
 @Entity
@@ -15,17 +16,19 @@ import org.springframework.stereotype.Component;
 @Table(name = "User")
 public class User {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="UserId")
+	@GeneratedValue
 	private int userId;
-
 	private String userName;
 
 	private String email;
 private String password;
 private String address;
-private int contact;
+
+
+private String contact;
+
 private int zipcode;
-private String role;
  private boolean enabled;
 public int getUserId() {
 	return userId;
@@ -57,10 +60,11 @@ public String getAddress() {
 public void setAddress(String address) {
 	this.address = address;
 }
-public int getContact() {
+
+public String getContact() {
 	return contact;
 }
-public void setContact(int contact) {
+public void setContact(String contact) {
 	this.contact = contact;
 }
 public int getZipcode() {
@@ -68,12 +72,6 @@ public int getZipcode() {
 }
 public void setZipcode(int zipcode) {
 	this.zipcode = zipcode;
-}
-public String getRole() {
-	return role;
-}
-public void setRole(String role) {
-	this.role = role;
 }
 public boolean isEnabled() {
 	return enabled;

@@ -9,12 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.niit.model.Category;
+
 @Repository
 public class CategoryDAOImpl implements CategoryDAO{
 	@Autowired
 	private SessionFactory sessionFactory;
 	public void saveCategory(Category category) {
-		Session session= sessionFactory.getCurrentSession();
+		/*System.out.println(category.getCategoryId());
+		System.out.println(category.getCategoryName());
+*/		Session session= sessionFactory.getCurrentSession();
 		session.saveOrUpdate(category);
 	}
 	public void delete(int categoryId) {

@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -19,8 +21,32 @@ public class Cart {
 	private int cartId;
 
 	private String productName;
-
+	private String user;
 	private int price;
+	private int total;
+	@OneToOne
+	@JoinColumn(name="product_id")
+	private Product products;
+	
+	public Product getProducts() {
+		return products;
+	}
+	public void setProducts(Product products) {
+		this.products = products;
+	}
+	public String getUser() {
+		return user;
+	}
+	public void setUser(String user) {
+		this.user = user;
+	}
+	public int getTotal() {
+		return total;
+	}
+	public void setTotal(int total) {
+		this.total = total;
+	}
+	
 	private int quantity;
 	public int getCartId() {
 		return cartId;

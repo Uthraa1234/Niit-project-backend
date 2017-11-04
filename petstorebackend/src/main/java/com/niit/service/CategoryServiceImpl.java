@@ -8,12 +8,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.DAO.CategoryDAO;
 import com.niit.model.Category;
+
+
 @Service
 @Transactional
 public class CategoryServiceImpl implements CategoryService {
 	@Autowired
 	private CategoryDAO categoryDao;
 	public void saveCategory(Category category) {
+		/*System.out.println(category.getCategoryName());*/
 		
 		categoryDao.saveCategory(category);
 	}
